@@ -10,7 +10,7 @@
 - MongoDB Database comms with Node API
 - MySQL Database comms with Java API
 
-* Base commands
+### Base commands
 
 ``` docker-compose build```
 ```docker-compose up```
