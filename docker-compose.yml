@@ -55,7 +55,9 @@ services:
       - "27017:27017"
 
   emartdb:
-    image: mysql:8.0.33
+    build:
+      context: './db'
+    image: mkcloudpro/emartmysqldb
     container_name: emartdb
     ports:
       - "3306:3306"
