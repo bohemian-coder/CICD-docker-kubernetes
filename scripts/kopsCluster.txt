@@ -17,6 +17,8 @@ aws ec2 create-volume --region=us-east-1 --availability-zone=us-east-1a --size=3
 #label nodes
 kubectl label nodes i-0411ff6394504a71a zone=us-east-1b
 
+create tag for the volume id KubernetesCluster: kube.mkcloudprojects.com
+
 Other Commands:
  * validate cluster: kops validate cluster --state=s3://clusters.maysk8s.in
 
