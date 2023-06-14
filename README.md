@@ -1,6 +1,6 @@
-# Containerize a microservices application
+# Containerize and deploy a microservices application to kubernetes using KOPS
 
-### Base application forked from devopshydclub/emartapp
+### Extending the emartapp forked from devopshydclub/emartapp
 
 * Important Notes:
 
