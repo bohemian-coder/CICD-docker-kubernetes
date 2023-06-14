@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vprodb
+  labels:
+    app: emartdb
+spec:
+  selector:
+    matchLabels:
+      app: emartdb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: emartdb
+    spec:
+      containers:
+      - name: emartdb
+        image: mkcloudpro/emartmysqldb
+        ports:
+        - name: emartdb-port
+          containerPort: 3306
+        env:
+         - name: MYSQL_ROOT_PASSWORD
+           value: "emartdbpass"
+
