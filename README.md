@@ -20,5 +20,5 @@ Containers can be pulled directly from dockerhub :
 - Java Web API:  docker pull mkcloudpro/emartwebapi
 - AngularJS Client: docker pull mkcloudpro/emartclient
 - Nginx: docker pull nginx
-- MySql: docker pull mysql
+- MySql: docker pull mysql:8.0.33
 - MongoDB: docker pull mongo

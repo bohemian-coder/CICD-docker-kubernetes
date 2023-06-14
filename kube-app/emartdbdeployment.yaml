@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emartdb
+  labels:
+    app: emartdb
+spec:
+  selector:
+    matchLabels:
+      app: emartdb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: emartdb
+    spec:
+      containers:
+        - name: emartdb
+          image: mysql:8.0.33
+          args:
+            - "ignore-db-dir=lost+found"
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: emart-db-data
+          ports:
+            - containerPort: 3306
+              name: emartdb-port
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: mysqldb-pass
+      nodeSelector:
+        zone: us-east-1a
+      volumes:
+        - name: emart-db-data
+          awsElasticBlockStore:
+            volumeID: vol-00a006c3a4442fceb
+            fsType: ext4
+                
+
+    
