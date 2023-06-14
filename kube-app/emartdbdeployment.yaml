@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
         - name: emartdb
-          image: mysql:8.0.33
+          image: mkcloudpro/emartmysqldb
           args:
             - "--ignore-db-dir=lost+found"
           volumeMounts:
             - mountPath: /var/lib/mysql
-              name: emart-db-data
+              name: emartdbdata
           ports:
             - containerPort: 3306
               name: emartdb-port
@@ -34,9 +34,9 @@ spec:
       nodeSelector:
         zone: us-east-1a
       volumes:
-        - name: emart-db-data
+        - name: emartdbdata
           awsElasticBlockStore:
-            volumeID: vol-00a006c3a4442fceb
+            volumeID: vol-06c77360a4087a302
             fsType: ext4
                 
 
