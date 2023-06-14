@@ -4,6 +4,7 @@ services:
   client:
     build:
       context: './client'
+    image: mkcloudpro/emartclient
     ports:
       - "4200:4200"
     container_name: client
@@ -17,6 +18,7 @@ services:
     ports:
       - "5000:5000"
     restart: always
+    image: mkcloudpro/emartapi
     container_name: api
     depends_on:
       - nginx
@@ -28,6 +30,7 @@ services:
     ports:
       - "9000:9000"
     restart: always
+    image: mkcloudpro/emartwebapi
     container_name: webapi
     depends_on:
       - emartdb
@@ -44,6 +47,8 @@ services:
   emongo:
     image: mongo:4
     container_name: emongo
+    volumes:
+      - emongodbdata:/data/db
     environment:
       - MONGO_INITDB_DATABASE=epoc
     ports:
@@ -54,6 +59,12 @@ services:
     container_name: emartdb
     ports:
       - "3306:3306"
+    volumes:
+      - emartdbdata:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=emartdbpass
       - MYSQL_DATABASE=books
+
+volumes:
+  emartdbdata: {}
+  emongodbdata: {}

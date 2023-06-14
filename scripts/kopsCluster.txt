@@ -11,9 +11,15 @@ kops update cluster --name kube.mkcloudprojects.com --yes --admin --state=s3://c
 #Delete Cluster
 kops delete cluster --name=kube.mkcloudprojects.com --state=s3://clusters.maysk8s.in --yes
 
+#Create a volume for MySql / MongoDB data
+aws ec2 create-volume --region=us-east-1 --availability-zone=us-east-1a --size=3 --volume-type=gp2
+
+#label nodes
+kubectl label nodes i-0411ff6394504a71a zone=us-east-1b
 
 Other Commands:
- * validate cluster: kops validate cluster --wait 10m
+ * validate cluster: kops validate cluster --state=s3://clusters.maysk8s.in
+
  * list nodes: kubectl get nodes --show-labels
  * ssh to a control-plane node: ssh -i ~/.ssh/id_rsa ubuntu@api.kube.mkcloudprojects.com
  * the ubuntu user is specific to Ubuntu. If not using Ubuntu please use the appropriate user based on your OS.
