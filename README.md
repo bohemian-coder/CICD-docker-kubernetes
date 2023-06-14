@@ -14,3 +14,11 @@
 
 ``` docker-compose build```
 ```docker-compose up```
+
+Containers can be pulled directly from dockerhub :
+- Node API: docker pull mkcloudpro/emartapi
+- Java Web API:  docker pull mkcloudpro/emartwebapi
+- AngularJS Client: docker pull mkcloudpro/emartclient
+- Nginx: docker pull nginx
+- MySql: docker pull mysql
+- MongoDB: docker pull mongo
