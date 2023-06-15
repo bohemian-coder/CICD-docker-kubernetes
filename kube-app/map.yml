@@ -33,3 +33,28 @@ spec:
       - name: mysql-pv
         persistentVolumeClaim:
           claimName: mysql-pvc
+
+---
+apiVersion: storage.k8s.io/v1beta1
+kind: StorageClass
+metadata:
+  name: mysql-sc
+provisioner: csi.trident.netapp.io
+reclaimPolicy: Retain
+mountOptions:
+  - debug
+parameters:
+  backendType:ontap-nas
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mysql-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: mysql-sc
