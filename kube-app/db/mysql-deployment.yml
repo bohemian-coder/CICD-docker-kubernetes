@@ -5,9 +5,12 @@ metadata:
 spec:
   ports:
   - port: 3306
+    targetPort: emartdb-port
+    protocol: TCP
   selector:
     app: emartdb
   clusterIP: None
+  
 ---
 apiVersion: apps/v1
 kind: Deployment

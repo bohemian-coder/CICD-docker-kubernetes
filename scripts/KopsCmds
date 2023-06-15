@@ -1,0 +1,26 @@
+#Create Cluster
+kops create cluster --name=<clustername> \
+--state=<s3 bucket> \
+--zones=us-east-1a \
+--node-count=1 --node-size=t3.medium --master-size=t3.medium --dns-zone=<domain name> \
+--node-volume-size=8 --master-volume-size=8
+
+#Run Cluster
+kops update cluster --name <clustername> --yes --admin --state=<s3bucketname>
+
+#validate cluster
+kops validate cluster --state=<s3bucketname>
+
+#Delete Cluster
+kops delete cluster --name=<clustername> --state=<s3bucketname> --yes
+
+#Create a volume for MySql / MongoDB data
+aws ec2 create-volume --region=us-east-1 --availability-zone=us-east-1a --size=8 --volume-type=gp2
+
+#label nodes
+kubectl label nodes <nodeid> zone=<zone>
+
+#delete resources
+kubectl delete deployment,svc mysql
+kubectl delete pvc mysql-pv-claim
+kubectl delete pv mysql-pv-volume
