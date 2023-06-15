@@ -20,6 +20,8 @@ spec:
         args:
           - "--ignore-db-dir=lost+found"
         volumeMounts:
+          - name: emartdb-init
+            mountPath: /docker-entrypoint-initdb.d
           - mountPath: /var/lib/mysql
             name: emartdbdata
         ports:
@@ -29,8 +31,20 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           value: "emartdbpass"
       volumes:
+      - name: emartdb-init
+        configMap:
+          name: emartdb-initdb-config
       - name: emartdbdata
         awsElasticBlockStore:
           volumeID: vol-06c77360a4087a302
           fsType: ext4
-                
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: emartdb-initdb-config
+data:
+  init.sql: |
+    CREATE DATABASE IF NOT EXISTS books;
+    USE books;
