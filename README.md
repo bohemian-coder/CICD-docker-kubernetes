@@ -2,7 +2,7 @@
 
 ### Extending the emartapp forked from devopshydclub/emartapp, to include Kubernetes deployment on AWS
 
-* Important Notes:
+#### Important Notes:
 
 - Frontend client is based on AngularJS and is hosted on Nginx
 - Backend Node API
