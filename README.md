@@ -1,6 +1,6 @@
 # Containerize and deploy a microservices application to kubernetes using KOPS
 
-### Extending the emartapp forked from devopshydclub/emartapp
+### Extending the emartapp forked from devopshydclub/emartapp, to include Kubernetes deployment on AWS
 
 * Important Notes:
 
