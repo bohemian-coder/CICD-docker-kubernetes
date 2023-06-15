@@ -10,7 +10,10 @@
 - MongoDB Database comms with Node API
 - MySQL Database comms with Java API
 
-#### Base docker commands
+#### System Requirements
+The *scripts* folder has all the pre-reqs needed. It is setup for Ubuntu Focal 20.4, but should run on 18 and 22+
+
+#### Docker Requirements
 
 ``` docker-compose build```
 ```docker-compose up```
@@ -23,4 +26,5 @@ Containers can be pulled directly from dockerhub :
 - MySql: docker pull mysql:5.6
 - MongoDB: docker pull mongo
 
-#### Base K8s commands
+#### K8s Requirements
+The *kube-app* folder contains all k8s config files
