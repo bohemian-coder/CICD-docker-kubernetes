@@ -36,7 +36,7 @@ spec:
           name: emartdb-initdb-config
       - name: emartdbdata
         awsElasticBlockStore:
-          volumeID: vol-06c77360a4087a302
+          volumeID: vol-066f734feecfdc572
           fsType: ext4
 
 ---
