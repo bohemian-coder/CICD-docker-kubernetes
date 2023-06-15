@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vprodb
+  name: emartdb
   labels:
     app: emartdb
 spec:
@@ -17,10 +17,20 @@ spec:
       containers:
       - name: emartdb
         image: mkcloudpro/emartmysqldb
+        args:
+          - "--ignore-db-dir=lost+found"
+        volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: emartdbdata
         ports:
         - name: emartdb-port
           containerPort: 3306
         env:
-         - name: MYSQL_ROOT_PASSWORD
-           value: "emartdbpass"
-
+        - name: MYSQL_ROOT_PASSWORD
+          value: "emartdbpass"
+      volumes:
+      - name: emartdbdata
+        awsElasticBlockStore:
+          volumeID: vol-06c77360a4087a302
+          fsType: ext4
+                
