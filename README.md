@@ -10,7 +10,7 @@
 - MongoDB Database comms with Node API
 - MySQL Database comms with Java API
 
-### Base commands
+#### Base docker commands
 
 ``` docker-compose build```
 ```docker-compose up```
@@ -22,3 +22,5 @@ Containers can be pulled directly from dockerhub :
 - Nginx: docker pull nginx
 - MySql: docker pull mysql:5.6
 - MongoDB: docker pull mongo
+
+#### Base K8s commands
