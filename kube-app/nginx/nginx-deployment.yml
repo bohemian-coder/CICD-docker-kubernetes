@@ -41,5 +41,5 @@ spec:
       volumes:
       - name: nginx-config
         hostPath:
-          path: ./default.conf
+          path: /home/ubuntu/emartapp/kube-app/nginx/default.conf
           type: File
