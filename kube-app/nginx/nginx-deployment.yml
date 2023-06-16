@@ -9,7 +9,7 @@ spec:
     protocol: TCP
   selector:
     app: nginx
-  clusterIP: None
+  type: Loadbalancer
   
 ---
 apiVersion: apps/v1
