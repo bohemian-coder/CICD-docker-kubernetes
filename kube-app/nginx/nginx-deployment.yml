@@ -40,6 +40,8 @@ spec:
           subPath: default.conf
       volumes:
       - name: nginx-config
-        hostPath:
-          path: /home/ubuntu/emartapp/kube-app/nginx/default.conf
-          type: File
+        configMap:
+          name: nginx-init-config
+        # hostPath:
+        #   path: /home/ubuntu/emartapp/kube-app/nginx/default.conf
+        #   type: File
