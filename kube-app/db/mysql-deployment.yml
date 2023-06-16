@@ -43,6 +43,8 @@ spec:
           mountPath: /var/lib/mysql
         - name: emartdb-init
           mountPath: /docker-entrypoint-initdb.d
+      nodeSelector:
+        zone: us-east-1a
       volumes:
       - name: emartdb-persistent-storage
         persistentVolumeClaim:
@@ -50,6 +52,7 @@ spec:
       - name: emartdb-init
         configMap:
           name: emartdb-initdb-config
+
 ---
 apiVersion: v1
 kind: ConfigMap

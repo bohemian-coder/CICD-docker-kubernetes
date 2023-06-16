@@ -39,6 +39,8 @@ spec:
         volumeMounts:
         - name: emongo-persistent-storage
           mountPath: /data/db
+      nodeSelector:
+        zone: us-east-1b
       volumes:
       - name: emongo-persistent-storage
         persistentVolumeClaim:
