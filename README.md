@@ -35,4 +35,4 @@ The *kube-app* folder contains all k8s config files
 Use *KopsCmds* to set up a 2 - 3 node cluster on AWS
 
 Configs use ContainerInit to force a deployment order;
-Deployment order: MySQL DB -> MongoDB -> Nginx -> WebAPI -> NodeAPI -> Client
+Deployment order: MySQL DB -> MongoDB -> NodeAPI -> WebAPI -> Client -> Nginx
