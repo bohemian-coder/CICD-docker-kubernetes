@@ -11,14 +11,14 @@ kops update cluster --name <clustername> --yes --admin --state=<s3bucketname>
 #validate cluster
 kops validate cluster --state=<s3bucketname>
 
-#Delete Cluster
-kops delete cluster --name=<clustername> --state=<s3bucketname> --yes
-
 #Create a volume for MySql / MongoDB data
 aws ec2 create-volume --region=us-east-1 --availability-zone=us-east-1a --size=8 --volume-type=gp2
 
-#label nodes
+#label nodes if using more than 1 worker
 kubectl label nodes <nodeid> zone=<zone>
+
+#Delete Cluster
+kops delete cluster --name=<clustername> --state=<s3bucketname> --yes
 
 #delete resources
 kubectl delete deployment,svc mysql

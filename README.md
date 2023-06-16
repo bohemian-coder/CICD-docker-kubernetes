@@ -2,7 +2,7 @@
 
 ### Extending the emartapp forked from devopshydclub/emartapp, to include Kubernetes deployment on AWS
 
-#### Important Notes:
+#### Notes:
 
 - Frontend client is based on AngularJS and is hosted on Nginx
 - Backend Node API
@@ -12,6 +12,10 @@
 
 #### System Requirements
 The *scripts* folder has all the pre-reqs needed. It is setup for Ubuntu Focal 20.4, but should run on 18 and 22+
+- Docker
+- Kubectl
+- Kops
+- awscli
 
 #### Docker Requirements
 
@@ -28,3 +32,7 @@ Containers can be pulled directly from dockerhub :
 
 #### K8s Requirements
 The *kube-app* folder contains all k8s config files
+Use *KopsCmds* to set up a 2 - 3 node cluster on AWS
+
+Configs use ContainerInit to force a deployment order;
+Deployment order: MySQL DB -> MongoDB -> Nginx -> WebAPI -> NodeAPI -> Client
