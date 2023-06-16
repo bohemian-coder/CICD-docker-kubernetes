@@ -1,7 +1,7 @@
 #Create Cluster
 kops create cluster --name=<clustername> \
 --state=<s3 bucket> \
---zones=us-east-1a \
+--zones=us-east-1a,us-east-1b  \
 --node-count=1 --node-size=t3.medium --master-size=t3.medium --dns-zone=<domain name> \
 --node-volume-size=8 --master-volume-size=8
 
@@ -12,7 +12,7 @@ kops update cluster --name <clustername> --yes --admin --state=<s3bucketname>
 kops validate cluster --state=<s3bucketname>
 
 #Create a volume for MySql / MongoDB data
-aws ec2 create-volume --region=us-east-1 --availability-zone=us-east-1a --size=8 --volume-type=gp2
+aws ec2 create-volume --region=us-east-1 --availability-zone=us-east-1a --size 8 --volume-type gp2 --tag-specifications 'ResourceType=volume,Tags=[{Key=KubernetesCluster,Value=clustername},{Key=Name, Value=volumename}]'
 
 #label nodes if using more than 1 worker
 kubectl label nodes <nodeid> zone=<zone>
