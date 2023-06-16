@@ -13,7 +13,7 @@ The *scripts* folder has all the pre-reqs needed for your "local" machine. Setup
 
 #### Docker Requirements
 
-To creat your own images and run the app w/out kubernetes:
+To create your own images and run the app w/out kubernetes:
 ``` docker-compose build```
 ```docker-compose up```
 
@@ -31,6 +31,9 @@ Containers can be pulled directly from dockerhub :
 - All relevant declaration files are contained in *kube-app* folder.
 - Configs use ContainerInit to force a deployment order, you can do this manually following this order;
 MySQL DB -> MongoDB -> NodeAPI -> WebAPI -> Client -> Nginx
+
+To run configs and setup pods, services, configmaps, persistent-volumes & PV claims:
+```kubectl apply -f <filename>```
 
 #### warning:
 - This is not secure enough for a production env : please use secret keys for all passwords.
