@@ -29,7 +29,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: {{. Values.nginximage}}
+      - image: {{.Values.nginximage}}
         name: nginx
         ports:
         - containerPort: 80
