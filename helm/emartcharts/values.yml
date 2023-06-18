@@ -1,0 +1,11 @@
+nginximage: nginx:latest
+serviceAccount:
+  create: true
+  name: "emartapp"
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+mysqlvolume: vol-06307a777b2f7dc45
+mongovolume: vol-0d298b3d3f8538d7b
