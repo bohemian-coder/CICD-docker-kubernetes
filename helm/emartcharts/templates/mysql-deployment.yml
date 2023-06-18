@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: emartdb
+spec:
+  ports:
+  - port: 3306
+    targetPort: emartdb-port
+    protocol: TCP
+  selector:
+    app: emartdb
+  clusterIP: None
+  
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emartdb
+spec:
+  selector:
+    matchLabels:
+      app: emartdb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: emartdb
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: emartdb
+        args:
+          - "--ignore-db-dir=lost+found"
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: emartdbpass
+        ports:
+        - containerPort: 3306
+          name: emartdb-port
+        volumeMounts:
+        - name: emartdb-persistent-storage
+          mountPath: /var/lib/mysql
+        - name: emartdb-init
+          mountPath: /docker-entrypoint-initdb.d
+      nodeSelector:
+        zone: us-east-1a
+      volumes:
+      - name: emartdb-persistent-storage
+        persistentVolumeClaim:
+          claimName: emartdb-claim
+      - name: emartdb-init
+        configMap:
+          name: emartdb-initdb-config
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: emartdb-initdb-config
+data:
+  init.sql: |
+    CREATE DATABASE IF NOT EXISTS books;
+    USE books;
