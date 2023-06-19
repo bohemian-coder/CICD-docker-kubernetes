@@ -26,3 +26,8 @@ kubectl delete pvc mysql-pv-claim
 kubectl delete pv mysql-pv-volume
 
 helm install -f values.yml <release-name> <chart-name>
+
+#create namespace
+
+#actual command run
+helm install --namespace <namespace> -f ./helm/emartcharts/values.yml <release-name> helm/emartcharts

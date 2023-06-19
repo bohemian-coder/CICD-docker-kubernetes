@@ -7,5 +7,5 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 3
   targetCPUUtilizationPercentage: 80
-mysqlvolume: vol-06307a777b2f7dc45
-mongovolume: vol-0d298b3d3f8538d7b
+mysqlvolume: vol-064c532f065755b2e
+mongovolume: vol-038c20b22f860be29
