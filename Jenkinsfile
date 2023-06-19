@@ -17,9 +17,11 @@ pipeline {
         }
         stage('Push images to docker hub') {
             steps {
+              script {
                 docker.withRegistry('', registryCredential){
                   sh 'docker-compose push'
                 }
+              }
             }
         }
         stage('Remove images post push') {
