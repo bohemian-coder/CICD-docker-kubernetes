@@ -13,7 +13,6 @@ pipeline {
         stage('Build images in docker-compose.yml') {
             steps {
               sh "docker-compose build"
-              //dockerComposeBuild(buildComposeFile: 'docker-compose.yml')
             }
         }
         stage('Push images to docker hub') {
