@@ -1,9 +1,6 @@
 pipeline {
     agent any
     environment {
-      clientRegistry = "mkcloudpro/emartclient"
-      webapiRegistry = "mkcloudpro/emartwebapi"
-      apiRegistry = "mkcloudpro/emartapi"
       registryCredential = 'dockercredential'
     }
     stages {
