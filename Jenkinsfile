@@ -35,7 +35,7 @@ pipeline {
         stage ('Kubernetes Deploy using Helm'){
           agent {label 'kops'}
           steps {
-            sh "helm upgrade --install --namespace emartprod -f helm/emartcharts/values.yml emartapp-stack helm/emartcharts"
+            sh "helm upgrade --install --namespace emartprod -f ./helm/emartcharts/values.yml emartapp-stack helm/emartcharts"
           }
         }
     }
