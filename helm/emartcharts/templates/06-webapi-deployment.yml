@@ -1,36 +1,36 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: webapi
-spec:
-  ports:
-  - port: 9000
-    targetPort: webapi-port
-    protocol: TCP
-  selector:
-    app: webapi
-  clusterIP: None
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: webapi
+# spec:
+#   ports:
+#   - port: 9000
+#     targetPort: webapi-port
+#     protocol: TCP
+#   selector:
+#     app: webapi
+#   clusterIP: None
   
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: webapi
-spec:
-  selector:
-    matchLabels:
-      app: webapi
-  strategy:
-    type: Recreate
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: webapi
-    spec:
-      containers:
-      - image: mkcloudpro/emartwebapi
-        name: webapi
-        ports:
-        - containerPort: 9000
-          name: webapi-port
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: webapi
+# spec:
+#   selector:
+#     matchLabels:
+#       app: webapi
+#   strategy:
+#     type: Recreate
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app: webapi
+#     spec:
+#       containers:
+#       - image: mkcloudpro/emartwebapi
+#         name: webapi
+#         ports:
+#         - containerPort: 9000
+#           name: webapi-port

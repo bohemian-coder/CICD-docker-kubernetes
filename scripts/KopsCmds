@@ -30,4 +30,8 @@ helm install -f values.yml <release-name> <chart-name>
 #create namespace
 
 #actual command run
-helm install --namespace <namespace> -f ./helm/emartcharts/values.yml <release-name> helm/emartcharts
+helm install --namespace emartprod -f ./helm/emartcharts/values.yml emart-stack helm/emartcharts
+
+helm delete emartapp-stack --namespace emartprod
+
+kubectl get all --namespace emartprod
