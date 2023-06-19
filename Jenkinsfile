@@ -27,9 +27,9 @@ pipeline {
         }
         stage('Remove images post push') {
           steps{
-            sh """
-            docker rmi \$(docker image ls | grep mkcloudpro | awk '{print \$3}')
-            """
+            // sh """
+            // docker rmi \$(docker image ls | grep mkcloudpro | awk '{print \$3}')
+            // """
           }
         }
         stage ('Kubernetes Deploy using Helm'){
